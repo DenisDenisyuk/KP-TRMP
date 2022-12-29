@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="result_1" author="ilia">
+        <createTable tableName="result">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_result_id" />
+            </column>
+            <column name="description" type="clob"></column>
+            <column name="factor_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_factor_result" references="factor(id)"/>
+            </column>
+            <column name="attempt_id" type="bigint">
+                <constraints nullable="true" foreignKeyName="fk_attempt_result" references="attempt(id)"/>
+            </column>
+            <column name="points" type="int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
